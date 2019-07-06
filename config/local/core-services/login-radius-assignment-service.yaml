@@ -1,0 +1,2 @@
+routes:
+    exemptedRoutes: ['/api/docs', '/version']

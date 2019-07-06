@@ -1,0 +1,70 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Login Radius Assignment APIs
+  description: API for Login Radius Assignment Service
+# during dev, should point to your local machine
+# basePath prefixes all resource paths 
+basePath: /login-radius-assignment-service
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+tags:
+- name: Login Radius
+  description: All Login Radius Endpoints
+paths:
+#---------------------------------------discounts ---------------------------------###
+
+  /weatherData:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: index
+    post:
+      tags:
+        - Login Radius
+      description: Get Weather Information
+      # used as the method name of the controller
+      operationId: getWeatherInfo
+      parameters: 
+        - $ref: '#/parameters/Authorization'
+        - in: body
+          name: data
+          schema:
+            $ref: '#/definitions/WeatherInfoRequest'
+          required: true
+          description: Request Body for get weather info
+      responses:
+        "200":
+          description: Success
+        # responses may fall through to errors
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/WeatherInfoResponse"
+        default:
+          description: Error
+# complex objects have schema definitions
+
+  #----------------------------------------- Parameters ----------------------------------------------#
+
+parameters: 
+  Authorization:
+    in: header
+    name: Authorization
+    type: string
+    required: true
+
+  #--------------------------------------- Defintions -------------------------------------#
+definitions:
+
+  #----------------------------------Weather Info -------------------------------------####
+  WeatherInfoRequest:
+    type: object
+  WeatherInfoResponse:
+    type: object

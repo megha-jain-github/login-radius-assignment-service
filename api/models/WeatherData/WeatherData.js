@@ -1,0 +1,1 @@
+// If we need to define some model schema we can, we can define here

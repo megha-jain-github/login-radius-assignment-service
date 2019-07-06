@@ -1,0 +1,11 @@
+http:
+    requestTimeOutInMs: 20000
+
+token:
+  tokenExpirationTime: '24h'
+    
+date:
+  format : "MMMM Do YYYY"
+  timeZone: "Asia/Kolkata"
+
+passOnRequestHeaders: "Authorization,CorrelationId,Content-Type"
